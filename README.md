@@ -1,7 +1,8 @@
 # 🇨🇿 humanizer-cz
 
-> Skill pro Claude AI — detekce a humanizace AI-generovaného textu v češtině
+> Skill pro Agent Zero — detekce a humanizace AI-generovaného textu v češtině
 
+[![Agent Zero](https://img.shields.io/badge/Agent%20Zero-Skill-blue?style=flat-square&logo=github)](https://github.com/frdel/agent-zero)
 [![Claude](https://img.shields.io/badge/Claude-Skill-blueviolet?style=flat-square&logo=anthropic)](https://claude.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 <div align="center">
@@ -14,14 +15,14 @@
 
 ## Co to je?
 
-**humanizer-cz** je specializovaný skill pro **Claude AI** (Anthropic) a další LLM, který slouží k detekci a odstranění znaků AI-generovaného textu v češtině. Na rozdíl od běžných anglických humanizerů je tento nástroj postavený na akademickém výzkumu českých univerzit a zohledňuje specifika českého jazyka.
+**humanizer-cz** je specializovaný skill pro **[Agent Zero](https://github.com/frdel/agent-zero)**, **Claude AI** a další LLM, který slouží k detekci a odstranění znaků AI-generovaného textu v češtině. Na rozdíl od běžných anglických humanizerů je tento nástroj postavený na akademickém výzkumu českých univerzit a zohledňuje specifika českého jazyka.
 
 Skill obsahuje komplexní příručku s **27 vzory AI psaní** rozdělenými do **14 strukturovaných sekcí**, včetně tabulek nadužívané AI slovní zásoby, příkladů před/po a 14krokového editačního procesu.
 
 Skill funguje s:
+- **Agent Zero** — plně kompatibilní jako Agent Zero skill (primární)
 - **Claude Project** — nahrajte `SKILL.md` jako knowledge soubor nebo vložte do Project Instructions
 - **Claude API** — použijte jako system prompt
-- **Agent Zero** — plně kompatibilní jako Agent Zero skill
 - **Jakýkoli LLM** — funguje s každým LLM, který podporuje systémové instrukce
 
 Klíčovým akademickým nálezem, na kterém skill staví, je rozlišení **statického vs. dynamického textu** (Milička et al., 2025) — AI texty jsou výrazně nominálnější (více podstatných jmen, méně sloves), což je nejsilnější signál pro detekci.
@@ -44,6 +45,17 @@ Existující humanizační nástroje jsou navrženy pro angličtinu a na češti
 - **Reference na akademické práce** (Masarykova univerzita, Univerzita Karlova, KInIT)
 
 ## Použití
+
+### S Agent Zero (primární)
+
+Skill je plně kompatibilní s frameworkem [Agent Zero](https://github.com/frdel/agent-zero):
+
+```bash
+# Zkopírujte složku do skills adresáře Agent Zero
+cp -r humanizer-cz /path/to/agent-zero/skills/
+```
+
+Po restartování Agent Zero se skill automaticky načte a bude dostupný pro humanizaci českých textů.
 
 ### S Claude AI
 
@@ -81,17 +93,6 @@ message = client.messages.create(
     messages=[{"role": "user", "content": "Zhumanizuj tento text:\n\n..."}]
 )
 ```
-
-### S Agent Zero
-
-Skill je plně kompatibilní s frameworkem [Agent Zero](https://github.com/frdel/agent-zero):
-
-```bash
-# Zkopírujte složku do skills adresáře Agent Zero
-cp -r humanizer-cz /path/to/agent-zero/skills/
-```
-
-Po restartování Agent Zero se skill automaticky načte a bude dostupný pro humanizaci českých textů.
 
 ### S jiným LLM
 
